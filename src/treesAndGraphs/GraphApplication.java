@@ -36,14 +36,6 @@ public class GraphApplication {
 		node2.value = 2;
 		node3.value = 3;
 		node4.value = 4;
-		LinkedList<GraphNode> list0 = new LinkedList<GraphNode>();
-		LinkedList<GraphNode> list1 = new LinkedList<GraphNode>();
-		LinkedList<GraphNode> list2 = new LinkedList<GraphNode>();
-		LinkedList<GraphNode> list3 = new LinkedList<GraphNode>();
-		LinkedList<GraphNode> list4 = new LinkedList<GraphNode>();
-		map.put(node0, list0);
-		map.put(node3, list3);
-		map.put(node4, list4);
 		depthFirstSearch(node0, map);
 	}
 

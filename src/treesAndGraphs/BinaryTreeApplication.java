@@ -1,24 +1,63 @@
 package treesAndGraphs;
 
-class Node {
+import java.util.HashMap;
+import java.util.LinkedList;
+import java.util.ListIterator;
+import java.util.Map;
+
+class TreeNode {
 	int value;
-	Node left;
-	Node right;
+	TreeNode left;
+	TreeNode right;
 }
 
 class BinaryTree {
-	Node root;
+	TreeNode root;
 
 	public BinaryTree() {
 		root = null;
 	}
 
+	public void createListEachDepth(TreeNode node) {
+		int depth = 0;
+		HashMap<Integer, LinkedList<TreeNode>> map = new HashMap<>();
+		LinkedList<TreeNode> currentList = new LinkedList<>();
+		currentList.add(node);
+		LinkedList<TreeNode> childrenList = new LinkedList<>();
+		map.put(depth, currentList);
+		ListIterator<TreeNode> iterator = currentList.listIterator();
+		while (iterator.hasNext()) {
+			while (iterator.hasNext()) {
+				TreeNode node1 = iterator.next();
+				if (node1.left != null) {
+					childrenList.add(node1.left);
+				}
+				if (node1.right != null) {
+					childrenList.add(node1.right);
+				}
+			}
+		}
+			while (!childrenList.isEmpty()) {
+				depth++;
+				map.put(depth, childrenList);
+
+				currentList = childrenList;
+				childrenList = new LinkedList<>();
+				iterator = currentList.listIterator();
+			}
+		
+		for (Map.Entry m : map.entrySet()) {
+			LinkedList<TreeNode> list = (LinkedList<TreeNode>) m.getValue();
+			System.out.println(list.remove());
+		}
+	}
+
 	public void insert(int valueReceived) {
-		Node node = new Node();
+		TreeNode node = new TreeNode();
 		node.value = valueReceived;
 	}
 
-	public void inOrderTraversal(Node node) {
+	public void inOrderTraversal(TreeNode node) {
 		if (node != null) {
 			System.out.print("	" + node.value);
 			inOrderTraversal(node.left);
@@ -26,23 +65,22 @@ class BinaryTree {
 		}
 	}
 
-	
 }
 
 public class BinaryTreeApplication {
 
 	public static void main(String[] args) {
 		BinaryTree binaryTree = new BinaryTree();
-		Node node1 = new Node();
-		Node node2 = new Node();
-		Node node3 = new Node();
-		Node node4 = new Node();
-		Node node5 = new Node();
-		Node node6 = new Node();
-		Node node7 = new Node();
-		Node node8 = new Node();
-		Node node9 = new Node();
-		Node node10 = new Node();
+		TreeNode node1 = new TreeNode();
+		TreeNode node2 = new TreeNode();
+		TreeNode node3 = new TreeNode();
+		TreeNode node4 = new TreeNode();
+		TreeNode node5 = new TreeNode();
+		TreeNode node6 = new TreeNode();
+		TreeNode node7 = new TreeNode();
+		TreeNode node8 = new TreeNode();
+		TreeNode node9 = new TreeNode();
+		TreeNode node10 = new TreeNode();
 		node1.value = 1;
 		node2.value = 2;
 		node3.value = 3;
@@ -62,7 +100,8 @@ public class BinaryTreeApplication {
 		node4.left = node8;
 		node4.right = node9;
 		node5.left = node10;
-		binaryTree.inOrderTraversal(node1);
+		// binaryTree.inOrderTraversal(node1);
+		binaryTree.createListEachDepth(node1);
 	}
 
 }

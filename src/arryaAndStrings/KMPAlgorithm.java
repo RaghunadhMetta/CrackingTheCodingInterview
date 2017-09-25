@@ -25,7 +25,7 @@ public class KMPAlgorithm {
 
 	public void implementKMPAlgo(String text, String pattern) {
 		int prefixArray[] = computePrefixArray(pattern);
-		int i = 0, j = 0;
+		int i = 0, j = 0; 
 		while (i < text.length() && j < pattern.length()) {
 			if (text.charAt(i) == pattern.charAt(j)) {
 				i++;

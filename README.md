@@ -1,2 +1,4 @@
 
-This is my individual github account, Contains problem solving solutions and a few academic assignments that i have done over the pas few months.
+This psrt of my github repo consists of code that i had written for non academic interests. 
+Contains several solutions for the different problem solving questions apart from Leetcode that i have coded as a personal interest. 
+ 
